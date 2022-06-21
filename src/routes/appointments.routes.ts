@@ -1,30 +1,28 @@
 import { Router } from 'express';
 import { parseISO } from 'date-fns';
-import AppointmentsRepository from '../repositories/AppointmentsRepository';
 import CreateAppointmentService from '../services/CreateAppointmentService';
+import PrismaAppointmentsRepository from '../repositories/prisma/PrismaAppointmentsRepository';
 
 const appointmentsRoutes = Router();
 
-const appointmentsRepository = new AppointmentsRepository();
+const prismaAppointmentsRepository = new PrismaAppointmentsRepository();
 
-appointmentsRoutes.get('/', (req, res) => {
-  const appointments = appointmentsRepository.all();
+appointmentsRoutes.get('/', async (req, res) => {
+  const appointments = await prismaAppointmentsRepository.all();
 
   return res.json(appointments);
 });
 
-appointmentsRoutes.post('/', (req, res) => {
+appointmentsRoutes.post('/', async (req, res) => {
   try {
-    const { provider, date } = req.body;
+    const { provider_id, date } = req.body;
 
     const parseDate = parseISO(date);
 
-    const createAppointmentService = new CreateAppointmentService(
-      appointmentsRepository,
-    );
+    const createAppointmentService = new CreateAppointmentService();
 
-    const appointment = createAppointmentService.execute({
-      provider,
+    const appointment = await createAppointmentService.execute({
+      provider_id,
       date: parseDate,
     });
 

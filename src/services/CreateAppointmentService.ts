@@ -1,32 +1,28 @@
+import { Appointment } from '@prisma/client';
 import { startOfHour } from 'date-fns';
 
-import Appointment from '../models/Appointments';
-import AppointmentsRepository from '../repositories/AppointmentsRepository';
+import PrismaAppointmentsRepository from '../repositories/prisma/PrismaAppointmentsRepository';
 
 interface Request {
-  provider: string;
+  provider_id: string;
   date: Date;
 }
 
 class CreateAppointmentService {
-  private appointmentsRepository: AppointmentsRepository;
-
-  constructor(appointmentsRepository: AppointmentsRepository) {
-    this.appointmentsRepository = appointmentsRepository;
-  }
-
-  execute({ provider, date }: Request): Appointment {
+  async execute({ provider_id, date }: Request): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
 
+    const prismaAppointmentsRepository = new PrismaAppointmentsRepository();
+
     const isAlreadyBookedAppointment =
-      this.appointmentsRepository.findByDate(appointmentDate);
+      await prismaAppointmentsRepository.findByDate(appointmentDate);
 
     if (isAlreadyBookedAppointment) {
-      throw Error('This appointment is already booked');
+      throw new Error('This appointment is already booked');
     }
 
-    const appointment = this.appointmentsRepository.create({
-      provider,
+    const appointment = prismaAppointmentsRepository.create({
+      provider_id,
       date: appointmentDate,
     });
 
