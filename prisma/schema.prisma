@@ -39,6 +39,7 @@ model User {
   email    String      @unique
   password String
   status   TrailStatus @default(ACTIVE)
+  avatar   String?
 
   Appointment Appointment[]
 

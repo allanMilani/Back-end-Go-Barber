@@ -1,5 +1,6 @@
 import { Appointment } from '@prisma/client';
 import { startOfHour } from 'date-fns';
+import AppError from '../errors/AppError';
 
 import PrismaAppointmentsRepository from '../repositories/prisma/PrismaAppointmentsRepository';
 
@@ -18,7 +19,7 @@ class CreateAppointmentService {
       await prismaAppointmentsRepository.findByDate(appointmentDate);
 
     if (isAlreadyBookedAppointment) {
-      throw new Error('This appointment is already booked');
+      throw new AppError('This appointment is already booked');
     }
 
     const appointment = prismaAppointmentsRepository.create({

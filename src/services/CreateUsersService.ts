@@ -1,5 +1,6 @@
 import { User } from "@prisma/client";
 import { hash } from "bcryptjs";
+import AppError from "../errors/AppError";
 import PrismaUsersRepository from "../repositories/prisma/PrismaUsersRepository";
 
 interface Request {
@@ -17,7 +18,7 @@ class CreateUsersService {
     const hashedPassword = await hash(password, 8);
 
     if (isAlreadyEmailExists) {
-      throw new Error("This email already used");
+      throw new AppError("This email already used", 401);
     }
 
     const user = await prismaUsersRepository.create({
