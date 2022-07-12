@@ -1,11 +1,7 @@
 import { Appointment } from '@prisma/client';
+import { AppointmentCreateData } from '../dtos/AppointmentCreateDTO';
 
-export interface AppointmentCreateData {
-  provider_id: string;
-  date: Date;
-}
-
-export interface AppointmentsRepository {
+export interface IAppointmentsRepository {
   all: () => Promise<Appointment[]>;
   create: (data: AppointmentCreateData) => Promise<Appointment>;
   findByDate: (date: Date) => Promise<Appointment | null>;

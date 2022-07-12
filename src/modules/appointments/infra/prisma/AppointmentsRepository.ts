@@ -1,11 +1,9 @@
 import { Appointment } from '@prisma/client';
-import prisma from '../../database';
-import {
-  AppointmentCreateData,
-  AppointmentsRepository,
-} from '../AppointmentsRepository';
+import prisma from '@shared/infra/prisma';
+import { IAppointmentsRepository } from '@modules/appointments/repositories/IAppointmentsRepository';
+import { AppointmentCreateData } from '@modules/appointments/dtos/AppointmentCreateDTO';
 
-class PrismaAppointmentsRepository implements AppointmentsRepository {
+class AppointmentsRepository implements IAppointmentsRepository {
   async all(): Promise<Appointment[]> {
     const appointments = await prisma.appointment.findMany();
 
@@ -37,4 +35,4 @@ class PrismaAppointmentsRepository implements AppointmentsRepository {
   }
 }
 
-export default PrismaAppointmentsRepository;
+export default AppointmentsRepository;

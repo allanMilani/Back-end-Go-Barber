@@ -1,17 +1,8 @@
 import { User } from '@prisma/client';
+import { UserCreateData } from '../dtos/UserCreateDTO';
+import { UserUpdateAvatar } from '../dtos/UserUpdateAvatarDTO';
 
-export interface UserCreateData {
-  name: string;
-  email: string;
-  password: string;
-}
-
-export interface UserUpdateAvatar {
-  user_id: string;
-  avatar: string;
-}
-
-export interface UsersRepository {
+export interface IUsersRepository {
   create: (data: UserCreateData) => Promise<User>;
   findByEmail: (email: string) => Promise<User | null>;
   findById: (user_id: string) => Promise<User | null>;

@@ -36,10 +36,17 @@
     ],
     "prettier/prettier": "error",
     "class-methods-use-this": "off",
+    "no-useless-constructor": "off",
+    "import/no-unresolved": "off"
   },
   "settings": {
     "import/resolver": {
-      "typescript": {}
+      "typescript": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
   }
 }
