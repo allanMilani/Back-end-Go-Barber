@@ -1,5 +1,4 @@
 import TrailStatus from '@config/status';
-import Appointment from '@modules/appointments/entities/Appointment';
 
 class User {
   id?: string;
@@ -17,8 +16,6 @@ class User {
   status!: TrailStatus;
 
   avatar?: string;
-
-  Appointmen!: Appointment[];
 }
 
 export default User;

@@ -3,19 +3,19 @@ import TrailStatus from '@config/status';
 // import User from '@modules/users/entities/User';
 
 class Appointment {
-  id: string;
+  id!: string;
 
-  createAt: Date;
+  createAt!: Date;
 
-  updateAt: Date;
+  updateAt!: Date;
 
   // provider?: User;
 
-  provider_id?: string | null;
+  provider_id?: string;
 
-  date: Date;
+  date!: Date;
 
-  status: TrailStatus;
+  status!: TrailStatus;
 
   // constructor({ id, date, provider_id }: Appointment) {
   //   return Object.assign(this, {

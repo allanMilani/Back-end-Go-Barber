@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Appointment } from '@prisma/client';
 import { injectable, inject } from 'tsyringe';
+import Appointment from '../entities/Appointment';
 import AppointmentsRepository from '../infra/prisma/AppointmentsRepository';
 
 @injectable()
@@ -15,7 +15,6 @@ class ListAppointmentService {
 
     return appointments;
   }
-
 }
 
 export default ListAppointmentService;

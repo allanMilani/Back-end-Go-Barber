@@ -17,7 +17,9 @@ class FakeAppointmentsRepository implements IAppointmentsRepository {
     provider_id,
     date,
   }: AppointmentCreateData): Promise<Appointment> {
-    const appointment = new Appointment({
+    const appointment = new Appointment();
+
+    Object.assign(appointment, {
       id: uuid(),
       date,
       provider_id,
