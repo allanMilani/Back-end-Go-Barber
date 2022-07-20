@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { Appointment } from '@prisma/client';
+import 'reflect-metadata';
 import { startOfHour } from 'date-fns';
 import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 
 import { IAppointmentsRepository } from '../repositories/IAppointmentsRepository';
+import Appointment from '../entities/Appointment';
 
 interface Request {
   provider_id: string;

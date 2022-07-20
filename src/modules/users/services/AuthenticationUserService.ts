@@ -1,11 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { User } from '@prisma/client';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 import { IUsersRepository } from '../repositories/IUsersRepository';
+import User from '../entities/User';
 
 interface Request {
   email: string;

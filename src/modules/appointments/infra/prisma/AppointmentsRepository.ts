@@ -1,7 +1,7 @@
-import { Appointment } from '@prisma/client';
 import prisma from '@shared/infra/prisma';
 import { IAppointmentsRepository } from '@modules/appointments/repositories/IAppointmentsRepository';
 import { AppointmentCreateData } from '@modules/appointments/dtos/AppointmentCreateDTO';
+import Appointment from '@modules/appointments/entities/Appointment';
 
 class AppointmentsRepository implements IAppointmentsRepository {
   async all(): Promise<Appointment[]> {
@@ -24,14 +24,14 @@ class AppointmentsRepository implements IAppointmentsRepository {
     return appointment;
   }
 
-  async findByDate(date: Date): Promise<Appointment | null> {
+  async findByDate(date: Date): Promise<Appointment | undefined> {
     const appointment = await prisma.appointment.findFirst({
       where: {
         date,
       },
     });
 
-    return appointment || null;
+    return appointment || undefined;
   }
 }
 
