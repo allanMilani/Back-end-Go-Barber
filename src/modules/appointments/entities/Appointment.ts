@@ -1,6 +1,7 @@
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable no-constructor-return */
-import TrailStatus from '@config/status';
-// import User from '@modules/users/entities/User';
+
+import { TrailStatus } from '@config/status';
 
 class Appointment {
   id!: string;
@@ -9,33 +10,11 @@ class Appointment {
 
   updateAt!: Date;
 
-  // provider?: User;
-
-  provider_id?: string;
+  provider_id!: string | null;
 
   date!: Date;
 
   status!: TrailStatus;
-
-  // constructor({ id, date, provider_id }: Appointment) {
-  //   return Object.assign(this, {
-  //     id,
-  //     createAt: new Date(),
-  //     date,
-  //     provider_id,
-  //     status: TrailStatus.ACTIVE,
-  //   });
-  // }
-
-  // static create({ date, provider_id }: Appointment) {
-  //   const user = new Appointment({
-  //     date,
-  //     provider_id,
-  //     createAt: new Date(),
-  //     status: TrailStatus.ACTIVE,
-  //   });
-  //   return user;
-  // }
 }
 
 export default Appointment;

@@ -4,7 +4,7 @@ import Appointment from '@modules/appointments/entities/Appointment';
 import { IAppointmentsRepository } from '@modules/appointments/repositories/IAppointmentsRepository';
 import { AppointmentCreateData } from '@modules/appointments/dtos/AppointmentCreateDTO';
 
-import TrailStatus from '@config/status';
+import { TrailStatus } from '@config/status';
 
 class FakeAppointmentsRepository implements IAppointmentsRepository {
   private appointments: Appointment[] = [];

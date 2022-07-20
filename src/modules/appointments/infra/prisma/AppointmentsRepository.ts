@@ -31,7 +31,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
       },
     });
 
-    return appointment || null;
+    return appointment || undefined;
   }
 }
 

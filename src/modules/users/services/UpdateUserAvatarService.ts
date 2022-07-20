@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { User } from '@prisma/client';
+import 'reflect-metadata';
 import path from 'path';
 import fs from 'fs';
 import { inject, injectable } from 'tsyringe';
@@ -7,6 +7,7 @@ import { inject, injectable } from 'tsyringe';
 import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
 import { IUsersRepository } from '../repositories/IUsersRepository';
+import User from '../entities/User';
 
 interface Request {
   user_id: string;

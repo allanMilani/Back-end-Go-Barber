@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import 'reflect-metadata';
 import { injectable, inject } from 'tsyringe';
 import Appointment from '../entities/Appointment';
 import AppointmentsRepository from '../infra/prisma/AppointmentsRepository';

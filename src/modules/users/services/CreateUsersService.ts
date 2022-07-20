@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/no-unresolved */
-import { User } from '@prisma/client';
+import 'reflect-metadata';
 import { hash } from 'bcryptjs';
 import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import { IUsersRepository } from '../repositories/IUsersRepository';
+import User from '../entities/User';
 
 interface Request {
   name: string;

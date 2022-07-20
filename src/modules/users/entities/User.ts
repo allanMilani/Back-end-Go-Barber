@@ -1,4 +1,4 @@
-import TrailStatus from '@config/status';
+import { TrailStatus } from '@config/status';
 
 class User {
   id?: string;
